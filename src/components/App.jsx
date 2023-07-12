@@ -4,7 +4,7 @@ import ContactForm from "./ContactForm/ContactForm";
 import Filter from "./Filter/Filter";
 import ContactList from "./ContactList/ContactList";
 
-// const LOCAL_KEY = 'contactList';
+const LOCAL_KEY = 'contactList';
 
 export class App extends Component {
   state = {
@@ -17,28 +17,28 @@ export class App extends Component {
     filter: '',
   };
 
-  // // добавление в хранилище
-  // componentDidMount(){
-  //   const contactsFromLocalStorage = localStorage.getItem(LOCAL_KEY);
-  //   const parsedContacts = JSON.parse(contactsFromLocalStorage);
+  // добавление в хранилище
+  componentDidMount(){
+    const contactsFromLocalStorage = localStorage.getItem(LOCAL_KEY);
+    const parsedContacts = JSON.parse(contactsFromLocalStorage);
 
-  //   if (parsedContacts) {
-  //     this.setState({contacts: parsedContacts})
-  //   }
-  // };
+    if (parsedContacts) {
+      this.setState({contacts: parsedContacts})
+    }
+  };
 
-  // // удаление из хранилища
-  // componentDidUpdate(prevProps, prevState){
-  //   const prevStateContacts = prevState.contacts;
-  //   const nextStayContacts = this.state.contacts;
+  // удаление из хранилища
+  componentDidUpdate(prevProps, prevState){
+    const prevStateContacts = prevState.contacts;
+    const nextStayContacts = this.state.contacts;
 
-  //   if (prevStateContacts !== nextStayContacts) {
-  //     localStorage.setItem(LOCAL_KEY, JSON.stringify(nextStayContacts));
-  //   } 
-  //   else {
-  //     localStorage.removeItem('todo')
-  //   }
-  // };
+    if (prevStateContacts !== nextStayContacts) {
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(nextStayContacts));
+    } 
+    // else {
+    //   localStorage.removeItem(LOCAL_KEY)
+    // }
+  };
 
   // слушатель на инпут ввода (для поиска)
   handleSearch = ({ target }) => {
