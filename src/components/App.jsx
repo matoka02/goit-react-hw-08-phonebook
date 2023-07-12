@@ -17,10 +17,6 @@ export class App extends Component {
     filter: '',
   };
 
-  
-
-
-
   // добавление в хранилище
   componentDidMount(){
     const contactsFromLocalStorage = localStorage.getItem(LOCAL_KEY);
@@ -38,8 +34,9 @@ export class App extends Component {
 
     if (prevStateContacts !== nextStayContacts) {
       localStorage.setItem(LOCAL_KEY, JSON.stringify(nextStayContacts));
-    } else {
-      localStorage.removeItem(LOCAL_KEY)
+    } 
+    else {
+      localStorage.removeItem('todo')
     }
   };
 
