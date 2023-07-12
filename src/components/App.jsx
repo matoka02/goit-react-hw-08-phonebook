@@ -4,7 +4,7 @@ import ContactForm from "./ContactForm/ContactForm";
 import Filter from "./Filter/Filter";
 import ContactList from "./ContactList/ContactList";
 
-const LOCAL_KEY = 'contactList';
+// const LOCAL_KEY = 'contactList';
 
 export class App extends Component {
   state = {
