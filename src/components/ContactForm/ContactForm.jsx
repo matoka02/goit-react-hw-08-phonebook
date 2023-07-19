@@ -6,16 +6,19 @@ const ContactForm = ({handleSubmit}) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
+  // слушатель на инпут ввода (для добавления)
   const handleChangeName = ({target}) => {
     const {value} = target;
     setName(value);
   };
 
+  // слушатель на инпут ввода (для добавления)
   const handleChangeNumber = ({target}) => {
     const {value} = target;
     setNumber(value);
   };
 
+    // добавление
   const handleFormSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
