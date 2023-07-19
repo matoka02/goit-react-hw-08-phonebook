@@ -21,9 +21,14 @@ const ContactForm = ({handleSubmit}) => {
     // добавление
   const handleFormSubmit = evt => {
     evt.preventDefault();
-    const form = evt.currentTarget;
-    handleSubmit({name: name, number: number})
-    form.reset();
+    console.log(evt.target);
+    // const form = evt.currentTarget;
+    handleSubmit({name: name, number: number});
+    // form.reset()
+
+    // очистка полей после отправки
+    setName('');
+    setNumber('');
   };
 
   return(
