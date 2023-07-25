@@ -5,7 +5,7 @@ import ContactForm from "./ContactForm/ContactForm";
 import Filter from "./Filter/Filter";
 import ContactList from "./ContactList/ContactList";
 
-const LOCAL_KEY = 'contactList';
+const LOCAL_KEY = 'contacts';
 
 export const App = () => {
   const [contacts, setContacts] = useState([
@@ -15,28 +15,42 @@ export const App = () => {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},    
   ]);
 
-  const [firstRenderList, setList] = useState(true);
-
   const [filter, setFilter] = useState('');
 
-  useEffect(()=> {
-    if (firstRenderList) {
-      const contactsFromLocalStorage = localStorage.getItem(LOCAL_KEY);
-
-      if (contactsFromLocalStorage !== 'undefined') {
-        const parsedContacts = JSON.parse(contactsFromLocalStorage);
-
-        if (parsedContacts) {
-          setContacts(parsedContacts);
-        }
-      };
-
-      setList(false);
-
-    } else {
-      localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
+  useEffect(() => {
+    const contactList = JSON.parse(localStorage.getItem(LOCAL_KEY));
+    if (contactList) {
+      setContacts(contactList);
     }
-  }, [contacts, firstRenderList]);
+    // console.log(contactList);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
+  }, [contacts]);
+
+
+  // // отклонено
+  // const [firstRenderList, setList] = useState(true);
+
+  // useEffect(()=> {
+  //   if (firstRenderList) {
+  //     const contactsFromLocalStorage = localStorage.getItem(LOCAL_KEY);
+
+  //     if (contactsFromLocalStorage !== 'undefined') {
+  //       const parsedContacts = JSON.parse(contactsFromLocalStorage);
+
+  //       if (parsedContacts) {
+  //         setContacts(parsedContacts);
+  //       }
+  //     };
+
+  //     setList(false);
+
+  //   } else {
+  //     localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
+  //   }
+  // }, [contacts, firstRenderList]);
 
   // слушатель на инпут ввода (для поиска)
   const handleSearch = ({ target }) => {
