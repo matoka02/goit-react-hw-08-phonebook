@@ -31,31 +31,17 @@ export const App = () => {
     );
   });
 
-    //componentDidMount
+
     useEffect(() => {
-      const contacts = window.localStorage.getItem(LOCAL_KEY);
-      if (contacts) {
-        setContacts(JSON.parse(contacts));
-      } else setContacts(initialContacts);
+      const contactList = JSON.parse(localStorage.getItem(LOCAL_KEY));
+      if (contactList) {
+        setContacts(contactList)
+      }
     }, []);
 
     useEffect(() => {
-      localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
+      contacts && localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
     }, [contacts]);
-
-  // // отклонено
-  // useEffect(() => {
-  //   const contactList = JSON.parse(localStorage.getItem(LOCAL_KEY));
-  //   if (contactList) {
-  //     setContacts(contactList);
-  //   }
-  //   // console.log(contactList);
-  // }, []);
-
-  // useEffect(() => {
-  //   contacts && localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
-  // }, [contacts]);
-
 
   // // отклонено
   // const [firstRenderList, setList] = useState(true);
