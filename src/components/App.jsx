@@ -8,26 +8,53 @@ import ContactList from "./ContactList/ContactList";
 const LOCAL_KEY = 'contacts';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([
+  const initialContacts = [
     {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
     {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},    
-  ]);
+    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},       
+  ];
+
+  // // отклонено
+  // const [contacts, setContacts] = useState([
+  //   {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+  //   {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+  //   {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+  //   {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},    
+  // ]);
 
   const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    const contactList = JSON.parse(localStorage.getItem(LOCAL_KEY));
-    if (contactList) {
-      setContacts(contactList);
-    }
-    // console.log(contactList);
-  }, []);
+  const [contacts, setContacts] = useState(() => {
+    return (
+      JSON.parse(window.localStorage.getItem(LOCAL_KEY)) ?? initialContacts
+    );
+  });
 
-  useEffect(() => {
-    localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
-  }, [contacts]);
+    //componentDidMount
+    useEffect(() => {
+      const contacts = window.localStorage.getItem(LOCAL_KEY);
+      if (contacts) {
+        setContacts(JSON.parse(contacts));
+      } else setContacts(initialContacts);
+    }, []);
+
+    useEffect(() => {
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
+    }, [contacts]);
+
+  // // отклонено
+  // useEffect(() => {
+  //   const contactList = JSON.parse(localStorage.getItem(LOCAL_KEY));
+  //   if (contactList) {
+  //     setContacts(contactList);
+  //   }
+  //   // console.log(contactList);
+  // }, []);
+
+  // useEffect(() => {
+  //   contacts && localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
+  // }, [contacts]);
 
 
   // // отклонено
