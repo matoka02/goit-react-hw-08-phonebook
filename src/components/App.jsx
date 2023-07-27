@@ -1,41 +1,43 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // import { nanoid } from 'nanoid';
 
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
-
-import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'store/selectors';
 import { addContact, delContact } from 'store/action';
 
 const LOCAL_KEY = 'contacts';
 
 export const App = () => {
-  // const allContacts = useSelector(getContacts);
-
+  const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
 
   const dispatch = useDispatch();
 
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem(LOCAL_KEY)) ?? getContacts;
-  });
+  const [firstRenderFlag, setFlag] = useState(true);
 
   useEffect(() => {
-    const contactList = JSON.parse(localStorage.getItem(LOCAL_KEY));
-    if (contactList) {
-      setContacts(contactList);
+    if (firstRenderFlag) {
+      const contactsFromLocalStorage = localStorage.getItem(LOCAL_KEY);
+
+      if (contactsFromLocalStorage !== 'undefined') {
+        const parsedContacts = JSON.parse(contactsFromLocalStorage);
+
+        if (parsedContacts) {
+        }
+      }
+      setFlag(false);
+    } else {
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
     }
-  }, []);
-
-  useEffect(() => {
-    contacts && localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
-  }, [contacts]);
+  }, [contacts, firstRenderFlag]);
 
   // проверка на дубликаты
   const handleSubmit = evt => {
+    // console.log(evt.name);
     const name = evt.name;
     const number = evt.number;
     const contactsLists = [...contacts];
