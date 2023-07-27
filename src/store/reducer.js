@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addContact, delContact, setFilter } from './actions';
+import { addContact, delContact, setFilter } from './action';
+// import { addContact, delContact, setFilter } from './actions';
 
 const initialState = {
   contacts: {
