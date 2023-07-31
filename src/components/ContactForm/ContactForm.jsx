@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import propTypes from 'prop-types';
-import css from './ContactForm.module.css';
+import { useDispatch } from 'react-redux';
 
-const ContactForm = ({handleSubmit}) => {
+import css from './ContactForm.module.css';
+import { addContact } from 'store/contacts/action-contacts';
+
+const ContactForm = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -22,11 +25,7 @@ const ContactForm = ({handleSubmit}) => {
   const handleFormSubmit = evt => {
     evt.preventDefault();
     console.log(evt.target);
-    // const form = evt.currentTarget;
-    handleSubmit({name: name, number: number});
-    // form.reset()
-
-    // очистка полей после отправки
+    dispatch(addContact(name,number));
     setName('');
     setNumber('');
   };
@@ -62,10 +61,6 @@ const ContactForm = ({handleSubmit}) => {
     </button>
   </form>    
   ) 
-};
-
-ContactForm.propTypes = {
-  handleSubmit: propTypes.func.isRequired,
 };
 
 export default ContactForm;

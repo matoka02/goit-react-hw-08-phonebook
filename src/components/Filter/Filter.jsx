@@ -1,17 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from 'store/selectors';
-import { setFilter } from 'store/action';
 
 import css from './Filter.module.css';
+import { filter } from 'store/filter/action-filter';
 
 const Filter = () => {
+  const value = useSelector((state)=>state.filter);
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
 
   // слушатель на инпут ввода (для поиска)
   const handleSearch = ({target}) => {
-    dispatch(setFilter(target.value));
+    dispatch(filter(target.value));
   };
 
   return (
@@ -22,7 +21,7 @@ const Filter = () => {
         type="text"
         name="filter"
         placeholder="Enter filter"
-        value={filter}
+        value={value}
         onChange={handleSearch}
       />
     </div>
