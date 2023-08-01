@@ -1,7 +1,7 @@
 import {
   configureStore,
-  getDefaultMiddleware,
-  combineReducers,
+  // getDefaultMiddleware,
+  // combineReducers,
 } from '@reduxjs/toolkit';
 import {
   persistStore,

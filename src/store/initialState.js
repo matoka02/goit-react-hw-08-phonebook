@@ -8,6 +8,6 @@ const contactsInitialState = { contacts: [] };
 //   ],
 // };
 
-const filterInitialState = { filter: '' };
+const filterInitialState = '';
 
 export { contactsInitialState, filterInitialState };

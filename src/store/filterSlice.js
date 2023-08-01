@@ -3,10 +3,12 @@ import { filterInitialState } from './initialState';
 
 const filterSlice = createSlice({
   name: 'filter',
-  // initialState: filterInitialState,
-  initialState: '',
+  initialState: filterInitialState,
+  // initialState: '',
   reducers: {
     filterContacts(state, { payload }) {
+      console.log(state);
+      console.log(payload);
       return payload;
     },
   },
