@@ -20,7 +20,7 @@ import { filterReducer } from './filter/reducer-filter';
 // import { filterReducer } from './filter/filter-reducer';
 
 const persistConfig = {
-  key: 'contacts',
+  key: 'contactList',
   storage,
   blacklist: ['filter'],
 };
