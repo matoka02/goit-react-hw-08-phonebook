@@ -7,11 +7,16 @@ import { deleteContact } from 'store/contactSlice';
 
 const ContactList = () => {
   const dispatch = useDispatch();
+
   const contacts = useSelector(state => {
     return state.contacts.contacts.filter(contact =>
-      contact.name.toLowerCase().trim().includes(state.filter.toLowerCase().trim())
+      contact.name
+        .toLowerCase()
+        .trim()
+        .includes(state.filter.toLowerCase().trim())
     );
   });
+
   // // отклонено
   // const contacts = useSelector(state => state.contacts);
   // const filter = useSelector(state => state.filter);
@@ -37,14 +42,14 @@ const ContactList = () => {
     <div>
       <ul>
         {contacts.map((contact, id) => (
-        // {visibleContacts.map((contact, id) => (          
+          // {visibleContacts.map((contact, id) => (
           <ContactListItem
             key={contact.id}
             name={contact.name}
             number={contact.number}
             id={contact.id}
             // handleDelete={handleDelete}
-            handleDelete={()=>dispatch(deleteContact(contact.id))}
+            handleDelete={() => dispatch(deleteContact(contact.id))}
           />
         ))}
       </ul>

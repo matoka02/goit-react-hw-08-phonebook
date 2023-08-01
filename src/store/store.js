@@ -14,13 +14,15 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { contactReducer } from './contactSlice';
-import { filterReducer } from './filterSlice';
+
 // import { contactReducer } from './contacts/reducer-contacts';
 // import { filterReducer } from './filter/reducer-filter';
+import { contactReducer } from './contactSlice';
+import { filterReducer } from './filterSlice';
 
 const persistConfig = {
-  key: 'contactList',
+  key: 'contactsList',
+  // key: 'contacts',      // сработает проверка на дубликаты
   storage,
   // blacklist: ['filter'],
 };

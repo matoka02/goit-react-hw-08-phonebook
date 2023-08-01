@@ -5,11 +5,19 @@ const contactSlice = createSlice({
   name: 'phone',
   initialState: contactsInitialState,
   reducers: {
-    addContact(state, action) {
-      state.contacts.push(action.payload);
+    // addContact(state, action) {
+    addContact(state, { payload }) {
+      // проверка на дубликаты
+      let duplicate = state.contacts.find(contact => contact.name === payload.name);
+
+      if (duplicate) {
+        alert(`${payload.name} is already in contacts.`);
+        return state;
+      }
+      state.contacts.push(payload);
     },
-    deleteContact(state, action) {
-      state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
+    deleteContact(state, { payload }) {
+      state.contacts = state.contacts.filter(contact => contact.id !== payload);
     },
   },
 });
