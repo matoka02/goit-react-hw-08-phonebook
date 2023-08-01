@@ -9,11 +9,11 @@ const contactSlice = createSlice({
     addContact(state, { payload }) {
       // проверка на дубликаты
       let duplicate = state.contacts.find(contact => contact.name === payload.name);
-
       if (duplicate) {
         alert(`${payload.name} is already in contacts.`);
         return state;
-      }
+      };
+
       state.contacts.push(payload);
     },
     deleteContact(state, { payload }) {
