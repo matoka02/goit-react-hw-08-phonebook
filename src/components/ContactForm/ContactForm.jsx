@@ -27,7 +27,7 @@ const ContactForm = () => {
     // добавление
   const handleFormSubmit = evt => {
     evt.preventDefault();
-    console.log(evt.target);
+    // console.log(evt.target);
     const name = evt.target.elements.name.value;
     const number = evt.target.elements.number.value;
     const newContact = {
