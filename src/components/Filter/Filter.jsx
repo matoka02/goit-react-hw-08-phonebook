@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import css from './Filter.module.css';
 import { filterContacts } from 'redux/filterSlice';
+import { selectFilter } from 'redux/selectors';
 // import { filter } from 'store/filter/action-filter';
 
 const Filter = () => {
-  const filter = useSelector((state)=>state.filter);
+  // const filter = useSelector((state)=>state.filter);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   // слушатель на инпут ввода (для поиска)
   const handleSearch = ({target}) => {
-    // dispatch(filter(target.value));
+    // dispatch(filterContacts(target.value));
     dispatch(filterContacts(target.value));
   };
 

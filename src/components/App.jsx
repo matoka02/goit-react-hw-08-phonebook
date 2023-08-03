@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
+import { getContactsThunk } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getContactsThunk());
+  }, [dispatch]);
+
+  const users = useSelector(selectContacts);
+  console.log(users);
 
   return (
     <div
