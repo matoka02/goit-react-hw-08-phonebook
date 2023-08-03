@@ -5,17 +5,19 @@ import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
 import { getContactsThunk } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { getError, getIsLoading, selectContacts } from 'redux/selectors';
+import Loader from './Loader/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const error = useSelector(getError);
+  const isLoading = useSelector(getIsLoading);
+  const users = useSelector(selectContacts);
+  console.log(users);
 
   useEffect(() => {
     dispatch(getContactsThunk());
   }, [dispatch]);
-
-  const users = useSelector(selectContacts);
-  console.log(users);
 
   return (
     <div
@@ -33,6 +35,7 @@ export const App = () => {
       <ContactForm />
       <h2> Contacts</h2>
       <Filter />
+      {isLoading && !error && <Loader />}
       <ContactList />
     </div>
   );
