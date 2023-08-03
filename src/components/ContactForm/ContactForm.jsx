@@ -33,7 +33,7 @@ const ContactForm = () => {
     const newContact = {
       // id: nanoid(),
       name: name,
-      number: number,
+      phone: number,
     };
     dispatch(addContactThunk(newContact))
     // setName('');
