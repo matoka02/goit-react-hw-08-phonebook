@@ -1,4 +1,3 @@
-const contactsInitialState = { contacts: [] };
 // const contactsInitialState = {
 //   contacts: [
 //     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -7,6 +6,10 @@ const contactsInitialState = { contacts: [] };
 //     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 //   ],
 // };
+
+// const contactsInitialState = { contacts: [] };
+
+const contactsInitialState = { items: [], error: null, isLoading: false };
 
 const filterInitialState = '';
 
