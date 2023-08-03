@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
-import { deleteContact } from 'store/contactSlice';
+import { deleteContact } from 'redux/contactSlice';
 // import { deleteContact } from 'store/contacts/action-contacts';
 
 const ContactList = () => {

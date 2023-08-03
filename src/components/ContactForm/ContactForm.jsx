@@ -4,7 +4,7 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import css from './ContactForm.module.css';
 // import { addContact } from 'store/contacts/action-contacts';
-import { addContact } from 'store/contactSlice';
+import { addContact } from 'redux/contactSlice';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
