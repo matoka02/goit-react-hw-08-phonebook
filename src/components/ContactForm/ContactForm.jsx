@@ -1,43 +1,40 @@
 // import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { nanoid } from '@reduxjs/toolkit';
 
 import css from './ContactForm.module.css';
 // import { addContact } from 'store/contacts/action-contacts';
 // import { addContact } from 'redux/contactSlice';
 import { addContactThunk } from 'redux/operations';
+import { getFilteredContacts } from 'redux/selectors';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
-
-  // // слушатель на инпут ввода (для добавления)
-  // const handleChangeName = ({target}) => {
-  //   const {value} = target;
-  //   setName(value);
-  // };
-
-  // // слушатель на инпут ввода (для добавления)
-  // const handleChangeNumber = ({target}) => {
-  //   const {value} = target;
-  //   setNumber(value);
-  // };
+  const items = useSelector(getFilteredContacts);
+  // console.log(items);
 
     // добавление
   const handleFormSubmit = evt => {
     evt.preventDefault();
-    // console.log(evt.target);
+
     const name = evt.target.elements.name.value;
     const number = evt.target.elements.number.value;
-    const newContact = {
-      // id: nanoid(),
-      name: name,
-      phone: number,
+    const contactsList = [...items];
+
+    // проверка на дубликаты
+    let duplicate = contactsList.findIndex(contact=>contact.name.toLowerCase()===name.toLowerCase()) !== - 1;
+    // console.log(duplicate); 
+
+    if (duplicate) {
+      alert(`${name} is already in contacts.`);
+    } else {
+      const newContact = {
+        // id: nanoid(),
+        name: name,
+        phone: number,
+      };
+      dispatch(addContactThunk(newContact));
     };
-    dispatch(addContactThunk(newContact))
-    // setName('');
-    // setNumber('');
     evt.target.reset();
   };
 
@@ -52,8 +49,6 @@ const ContactForm = () => {
       title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
       required
       placeholder="Enter name"
-      // value={name}
-      // onChange={handleChangeName}
     />
     <label className={css.formLabel}>Number</label>
     <input
@@ -64,8 +59,6 @@ const ContactForm = () => {
       title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
       required
       placeholder="Enter phone number"
-      // value={number}
-      // onChange={handleChangeNumber}
     />
     <button className={css.formBtn} type="submit">
       Add contact
