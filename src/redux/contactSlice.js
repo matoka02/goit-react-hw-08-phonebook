@@ -40,7 +40,7 @@ const handleDeleteFulfilled = (state, action) => {
 };
 
 const handleAddFulfilled = (state, action) => {
-  state.items = [action.payload, ...state.items];
+  state.items = [...state.items, action.payload];
   state.error = null;
   state.isLoading = false;
 };
