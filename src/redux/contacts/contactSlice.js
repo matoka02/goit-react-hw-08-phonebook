@@ -3,26 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { contactsInitialState } from './initialState';
 import { addContactThunk, deleteContactThunk, getContactsThunk } from './operations';
 
-// const contactSlice = createSlice({
-//   name: 'phone',
-//   initialState: contactsInitialState,
-//   reducers: {
-//     addContact(state, { payload }) {
-//       // проверка на дубликаты
-//       let duplicate = state.contacts.find(contact => contact.name === payload.name);
-//       if (duplicate) {
-//         alert(`${payload.name} is already in contacts.`);
-//         return state;
-//       };
-
-//       state.contacts.push(payload);
-//     },
-//     deleteContact(state, { payload }) {
-//       state.contacts = state.contacts.filter(contact => contact.id !== payload);
-//     },
-//   },
-// });
-
 const handlePending = state => {
   state.isLoading = true;
 };

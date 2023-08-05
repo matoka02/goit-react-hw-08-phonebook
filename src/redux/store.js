@@ -13,8 +13,8 @@ import {
 } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 
-import { contactReducer } from './contactSlice';
-import { filterReducer } from './filterSlice';
+import { contactReducer } from './contacts/contactSlice';
+import { filterReducer } from './contacts/filterSlice';
 
 // const persistConfig = {
 //   key: 'contactsList',

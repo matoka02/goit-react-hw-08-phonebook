@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 // import { deleteContact } from 'redux/contactSlice';
-import { getFilteredContacts } from 'redux/selectors';
-import { deleteContactThunk } from 'redux/operations';
+import { getFilteredContacts } from 'redux/contacts/selectors';
+import { deleteContactThunk } from 'redux/contacts/operations';
 
 const ContactList = () => {
   const dispatch = useDispatch();
