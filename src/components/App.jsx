@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+// import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 
-import ContactForm from './ContactForm/ContactForm';
-import Filter from './Filter/Filter';
-import ContactList from './ContactList/ContactList';
-import { getContactsThunk } from 'redux/contacts/operations';
-import { getError, getIsLoading, selectContacts } from 'redux/contacts/selectors';
-import Loader from './Loader/Loader';
+// import ContactForm from './ContactForm/ContactForm';
+// import Filter from './Filter/Filter';
+// import ContactList from './ContactList/ContactList';
+// import { getContactsThunk } from 'redux/contacts/operations';
+// import { getError, getIsLoading, selectContacts } from 'redux/contacts/selectors';
+// import Loader from './Loader/Loader';
 
 export const App = () => {
   // const dispatch = useDispatch();
