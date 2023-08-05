@@ -1,33 +1,26 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ContactListItem } from 'components/ContactListItem/ContactListItem';
-// import { deleteContact } from 'redux/contactSlice';
-import { getFilteredContacts } from 'redux/contacts/selectors';
+import { getFilteredContacts, selectContacts } from 'redux/contacts/selectors';
 import { deleteContactThunk } from 'redux/contacts/operations';
+
+import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 
 const ContactList = () => {
   const dispatch = useDispatch();
 
-  // const contacts = useSelector(state => {
-  //   return state.contacts.contacts.filter(contact =>
-  //     contact.name
-  //       .toLowerCase()
-  //       .trim()
-  //       .includes(state.filter.toLowerCase().trim())
-  //   );
-  // });
-
   const contacts = useSelector(getFilteredContacts);
+  const users = useSelector(selectContacts);
 
   return (
     <div>
+      <h3>Your phonebook has {users.length} contacts</h3>
       <ul>
         {contacts.map((item) => (
           <ContactListItem
             key={item.id}
             name={item.name}
-            number={item.phone}
+            number={item.number}
             id={item.id}
             handleDelete={() => dispatch(deleteContactThunk(item.id))}
           />
