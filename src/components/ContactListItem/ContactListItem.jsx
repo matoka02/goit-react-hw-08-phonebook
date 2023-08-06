@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import css from './ContactListItem.module.css';
 
 export const ContactListItem = ({ id, name, number, handleDelete }) => {
-  console.log(id);
+  // console.log(id);
   return (
     <li className={css.contactListItem}>
       <p>
