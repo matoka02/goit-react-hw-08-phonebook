@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addContactThunk } from 'redux/contacts/operations';
-import { getFilteredContacts } from 'redux/contacts/selectors';
+import { addContactThunk } from 'store/contacts/operations';
+import { getFilteredContacts } from 'store/contacts/selectors';
 import css from './ContactForm.module.css';
 
 const ContactForm = () => {
@@ -19,7 +19,7 @@ const ContactForm = () => {
 
     // проверка на дубликаты
     let duplicate = contactsList.findIndex(contact=>contact.name.toLowerCase()===name.toLowerCase()) !== - 1;
-    // console.log(duplicate); 
+    // console.log(duplicate);
 
     if (duplicate) {
       alert(`${name} is already in contacts.`);
@@ -58,8 +58,8 @@ const ContactForm = () => {
     <button className={css.formBtn} type="submit">
       Add contact
     </button>
-  </form>    
-  ) 
+  </form>
+  )
 };
 
 export default ContactForm;

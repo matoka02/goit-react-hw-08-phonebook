@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { persistor } from 'redux/store';
-import { store } from 'redux/store';
+import { persistor } from 'store/store';
+import { store } from 'store/store';
 import { App } from 'components/App';
 // import './index.css';
 import '@fontsource/roboto/300.css';

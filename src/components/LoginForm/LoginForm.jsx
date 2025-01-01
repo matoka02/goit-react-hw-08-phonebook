@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { logIn } from 'redux/auth/operations';
-import { selectIsLoading } from 'redux/contacts/selectors';
+import { logIn } from 'store/auth/operations';
+import { selectIsLoading } from 'store/contacts/selectors';
 import css from './LoginForm.module.css';
 
 const LoginForm = () => {
