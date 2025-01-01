@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // import { addContact, deleteContact, getContacts } from 'services/mocApi';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://connections-api.goit.global';
 
 const getContactsThunk = createAsyncThunk(
   'contacts/fetchAll',
