@@ -4,7 +4,7 @@ import { Button, Typography, Box } from '@mui/material';
 import useAuth from 'hooks/useAuth';
 import { logOut } from 'store/auth/operations';
 
-const UserMenu = () => {
+export const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
@@ -30,5 +30,3 @@ const UserMenu = () => {
     </Box>
   );
 };
-
-export default UserMenu;

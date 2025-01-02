@@ -3,7 +3,7 @@ import { Button, Box } from '@mui/material';
 
 import useAuth from 'hooks/useAuth';
 
-const Navigation = () => {
+export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
@@ -51,5 +51,3 @@ const Navigation = () => {
     </Box>
   );
 };
-
-export default Navigation;
