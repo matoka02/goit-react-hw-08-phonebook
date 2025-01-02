@@ -20,10 +20,8 @@ const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      alert(
-        'User with such data is already exists or you used invalid data, try again.'
-      );
-      return thunkAPI.rejectWithValue(error.message);
+      console.error(error.message);
+      return thunkAPI.rejectWithValue('User with such data is already exists or you used invalid data, try again.' || error.message);
     }
   }
 );
@@ -34,8 +32,8 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     setAuthHeader(res.data.token);
     return res.data;
   } catch (error) {
-    alert('You used invalid data, check it and try again.');
-    return thunkAPI.rejectWithValue(error.message);
+    console.error(error.message);
+    return thunkAPI.rejectWithValue('You used invalid data, check it and try again.' || error.message);
   }
 });
 
